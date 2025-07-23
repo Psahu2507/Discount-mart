@@ -1,0 +1,235 @@
+<style>
+    /* Font Import */
+    @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+    /* Color Variables */
+    :root {
+        --primary: #000000;
+        --secondary: #333333;
+        --text: #666666;
+        --light: #f8f8f8;
+        --accent: #e8e8e8;
+        --white: #FFFFFF;
+        --black: #000000;
+        --border: #e0e0e0;
+    }
+
+    /* Base Styles for Header */
+    .top-header {
+        background-color: var(--white);
+        color: var(--text);
+        padding: 10px 0;
+        font-size: 14px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .top-header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-contact span {
+        margin-right: 20px;
+    }
+
+    .header-contact i {
+        margin-right: 5px;
+        color: var(--text);
+    }
+
+    .header-links a {
+        margin-left: 15px;
+        color: var(--text);
+        transition: color 0.3s ease;
+    }
+
+    .header-links a:hover {
+        color: var(--primary);
+    }
+
+    .main-header {
+        padding: 20px 0;
+        background-color: var(--white);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .main-header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .logo h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary);
+        font-family: 'Playfair Display', serif;
+    }
+
+    .categories-dropdown {
+        margin: 0 20px;
+    }
+
+    .categories-dropdown select {
+        padding: 12px 20px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-size: 14px;
+        font-family: 'Jost', sans-serif;
+        min-width: 200px;
+    }
+
+    .search-box {
+        flex: 1;
+        max-width: 600px;
+        margin: 0 30px;
+    }
+
+    .search-box form {
+        display: flex;
+        width: 100%;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 12px 20px;
+        border: 1px solid var(--border);
+        border-radius: 4px 0 0 4px;
+        font-size: 14px;
+    }
+
+    .search-box button {
+        padding: 0 20px;
+        background-color: var(--primary);
+        color: var(--white);
+        border: none;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+    }
+
+    .header-icons {
+        display: flex;
+        align-items: center;
+    }
+
+    .header-icons a {
+        margin-left: 20px;
+        font-size: 20px;
+        color: var(--primary);
+        position: relative;
+    }
+
+    .cart-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: var(--primary);
+        color: var(--white);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+        .main-header .container {
+            flex-direction: column;
+        }
+
+        .logo,
+        .categories-dropdown,
+        .search-box,
+        .header-icons {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .search-box {
+            order: 3;
+            margin: 20px 0;
+        }
+
+        .header-icons {
+            justify-content: flex-end;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .top-header .container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .header-contact span {
+            display: block;
+            margin: 5px 0;
+        }
+
+        .header-links {
+            margin-top: 10px;
+        }
+
+        .header-links a {
+            margin: 0 10px;
+        }
+    }
+</style>
+
+<div class="top-header">
+    <div class="container">
+        <div class="header-contact">
+            <span><i class="fas fa-phone"></i> +1 234 567 890</span>
+            <span><i class="fas fa-envelope"></i> info@freshcart.com</span>
+        </div>
+        <div class="header-links">
+            <% if (user) { %>
+                <% if (user.role==='admin' ) { %>
+                    <a href="/home"><i class="fas fa-home"></i> Home</a>
+                    <a href="/admin-dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <% } else { %>
+                        <a href="/home"><i class="fas fa-home"></i> Home</a>
+                        <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <% } %>
+                            <% } else { %>
+                                <a href="/home"><i class="fas fa-home"></i> Home</a>
+                                <a href="/login"><i class="fas fa-user"></i> Login</a>
+                                <a href="/signup"><i class="fas fa-user-plus"></i> Signup</a>
+                                <% } %>
+        </div>
+    </div>
+</div>
+
+<header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <h2>FreshCart</h2>
+        </div>
+
+        <div class="search-box">
+            <form action="/search" method="get">
+                <input type="text" name="query" placeholder="Search for products...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <div class="header-icons">
+            <a href="/wishlist"><i class="far fa-heart"></i></a>
+            <a href="/cart" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </div>
+</header>

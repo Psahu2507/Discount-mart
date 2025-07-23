@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshCart - FAQs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+        /* Color Variables */
+        :root {
+            --primary: #000000;
+            --secondary: #333333;
+            --text: #666666;
+            --light: #f8f8f8;
+            --accent: #e8e8e8;
+            --white: #FFFFFF;
+            --black: #000000;
+            --border: #e0e0e0;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 16px;
+            font-family: 'Jost', sans-serif;
+            background-color: var(--light);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* FAQ Section Styles */
+        main section {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        main section h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        main section h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary);
+            margin: 15px auto 0;
+        }
+
+        form {
+            margin-bottom: 40px;
+            display: flex;
+        }
+
+        form input {
+            width: calc(100% - 100px);
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+            font-family: 'Jost', sans-serif;
+        }
+
+        form button {
+            width: 100px;
+            padding: 12px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: var(--secondary);
+        }
+
+        .faq-list {
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .faq-item p {
+            font-size: 15px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        main section>div:last-child {
+            text-align: center;
+        }
+
+        main section>div:last-child p {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        main section>div:last-child a {
+            font-weight: 500;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            main section {
+                margin: 40px 20px;
+                padding: 20px;
+            }
+
+            main section h1 {
+                font-size: 28px;
+            }
+
+            form input {
+                width: calc(100% - 80px);
+            }
+
+            form button {
+                width: 80px;
+            }
+
+            .faq-list {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .faq-item h3 {
+                font-size: 18px;
+            }
+
+            .faq-item p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            main section h1 {
+                font-size: 24px;
+            }
+
+            form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            form input {
+                width: 100%;
+                border-radius: 4px;
+            }
+
+            form button {
+                width: 100%;
+                border-radius: 4px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+        <main>
+            <section class="container">
+                <h1>Frequently Asked Questions</h1>
+                <div>
+                    <form action="/faq" method="get">
+                        <input type="text" name="search" placeholder="Search FAQs...">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="faq-list">
+                    <% const faqs=[ { question: 'How does the discount system work?' ,
+                        answer: 'Items approaching their expiry date are automatically discounted to help reduce food waste while offering you great deals.'
+                        }, { question: 'Is there a minimum purchase amount?' ,
+                        answer: 'No, you can purchase as little or as much as you want. However, some delivery options may have minimums.'
+                        }, { question: 'How do I know the items are still fresh?' ,
+                        answer: 'All items are guaranteed fresh until their listed expiry date. We never sell expired products.'
+                        }, { question: 'Can I return discounted items?' ,
+                        answer: 'Due to the nature of these products, all sales are final. However, if there is an issue with your order, please contact us.'
+                        } ]; %>
+                        <% faqs.forEach(faq=> { %>
+                            <div class="faq-item">
+                                <h3>
+                                    <%= faq.question %>
+                                </h3>
+                                <p>
+                                    <%= faq.answer %>
+                                </p>
+                            </div>
+                            <% }); %>
+                </div>
+                <div>
+                    <p>Still have questions? <a href="/contact-us">Contact our support team</a></p>
+                </div>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+</body>
+
+</html>

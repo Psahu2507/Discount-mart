@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshCart - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+        /* Color Variables */
+        :root {
+            --primary: #000000;
+            --secondary: #333333;
+            --text: #666666;
+            --light: #f8f8f8;
+            --accent: #e8e8e8;
+            --white: #FFFFFF;
+            --black: #000000;
+            --border: #e0e0e0;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 16px;
+            font-family: 'Jost', sans-serif;
+            background-color: var(--light);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Login Form Styles */
+        .login-form {
+            max-width: 500px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .login-form h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary);
+            margin: 15px auto 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .form-group label span {
+            color: #e74c3c;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'Jost', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 42px;
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--text);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .form-actions button {
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-actions button:hover {
+            background-color: var(--secondary);
+        }
+
+        .form-actions a {
+            font-size: 14px;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-link p {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .signup-link a {
+            font-weight: 500;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .success-message {
+            color: #2ecc71;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .login-form {
+                margin: 40px 20px;
+                padding: 20px;
+            }
+
+            .login-form h1 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .form-actions button {
+                width: 100%;
+            }
+
+            .form-actions a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+        <main>
+            <section class="login-form">
+                <h1>Login to Your Account</h1>
+
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email<span> *</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password<span> *</span></label>
+                        <input type="password" id="password" name="password" required>
+                        <span class="toggle-password">👁</span>
+                    </div>
+                    <% if (mfaRequired) { %>
+                        <div class="form-group">
+                            <label for="mfa">MFA Code<span> *</span></label>
+                            <input type="text" id="mfa" name="mfa" required>
+                        </div>
+                        <% } %>
+                            <div class="form-actions">
+                                <button type="submit">Login</button>
+                                <a href="/forgot-password">Forgot Password?</a>
+                            </div>
+                            <div class="signup-link">
+                                <p>Don't have an account? <a href="/signup">Sign up here</a></p>
+                            </div>
+                </form>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+            <script src="/assets/js/login.js?v=<%= new Date().getTime() %>"></script>
+</body>
+
+</html>
