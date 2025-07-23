@@ -110,13 +110,5 @@ Server Logs: Check server logs for errors related to routes or MongoDB connectio
 Contributing
 Contributions are welcome! Please follow these steps:
 
-Fork the repository.
-Create a new branch: git checkout -b feature/your-feature.
-Make changes and commit: git commit -m "Add your feature".
-Push to the branch: git push origin feature/your-feature.
-Submit a pull request.
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-Contact
-For questions or support, reach out to the DiscountMart team at support@discountgroceries.com or visit the Contact Us page.
+
