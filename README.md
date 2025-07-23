@@ -32,30 +32,6 @@ CSRF middleware for security
 
 
 
-Project Structure
-DiscountMart/
-├── assets/
-│   ├── css/
-│   │   ├── (styles embedded in EJS files)
-│   ├── js/
-│   │   ├── login.js
-│   │   ├── signup.js
-│   │   ├── contact-us.js
-│   │   ├── faq.js
-├── views/
-│   ├── partials/
-│   │   ├── header.ejs
-│   │   ├── footer.ejs
-│   ├── home.ejs
-│   ├── login.ejs
-│   ├── signup.ejs
-│   ├── contact-us.ejs
-│   ├── faq.ejs
-├── node_modules/
-├── package.json
-├── index.js (assumed server file)
-└── README.md
-
 
 views/: Contains EJS templates for rendering pages, with header.ejs and footer.ejs for consistent navigation and footer content.
 assets/js/: Client-side JavaScript files for form validation, password toggling, phone number formatting, and FAQ accordion functionality.
