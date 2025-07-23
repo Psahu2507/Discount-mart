@@ -3,6 +3,8 @@ Overview
 DiscountMart is a full-stack e-commerce web application designed to promote sustainable shopping by offering discounted groceries nearing their expiry dates, helping to reduce food waste while providing affordable options to customers. Built with Node.js, Express, and EJS, the platform features a clean, responsive user interface with a consistent design across all pages, leveraging modern web technologies and best practices. The application includes user authentication, product browsing, form validation, and an interactive FAQ section, making it a robust solution for both customers and administrators.
 Features
 
+This is a youtube link of the working project - https://www.youtube.com/watch?feature=shared&v=ZcNO4UhwXp4
+
 User Authentication: Secure login and signup functionality with form validation, including password visibility toggling and role-based access (Customer or Admin).
 Product Catalog: A searchable product listing on the homepage, allowing users to browse discounted grocery items efficiently.
 Contact Us: A dedicated customer support page with contact information (phone, email, hours) and a form for submitting inquiries.
